@@ -1,0 +1,30 @@
+FROM jupyter/pyspark-notebook:spark-3.5.0
+
+USER root
+
+# Install additional system packages
+RUN apt-get update && apt-get install -y \
+    wget \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+USER $NB_UID
+
+# Install Python packages
+RUN pip install --no-cache-dir \
+    boto3 \
+    s3fs \
+    pyiceberg \
+    pandas \
+    numpy \
+    matplotlib \
+    seaborn \
+    plotly
+
+# Create custom Spark configuration directory
+RUN mkdir -p /usr/local/spark/conf
+
+# Set environment variables
+ENV PYSPARK_PYTHON=python3
+ENV PYSPARK_DRIVER_PYTHON=python3
+ENV SPARK_HOME=/usr/local/spark
