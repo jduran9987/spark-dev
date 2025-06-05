@@ -13,11 +13,11 @@ services:
       - "8080:8080"  # Spark master web UI port
       - "7077:7077"  # Spark master port
     volumes:
-      - ./spark-apps:/opt/bitnami/spark/apps
-      - ./spark-data:/opt/bitnami/spark/data
-      - ./spark-logs:/opt/bitnami/spark/logs
+      - ../spark-apps:/opt/bitnami/spark/apps
+      - ../spark-data:/opt/bitnami/spark/data
+      - ../spark-logs:/opt/bitnami/spark/logs
       - ./spark-defaults.conf:/opt/bitnami/spark/conf/spark-defaults.conf:ro
-      - ./jars:/opt/bitnami/spark/jars/custom:ro
+      - ../jars:/opt/bitnami/spark/jars/custom:ro
     networks:
       - spark-network
   
@@ -37,11 +37,11 @@ services:
     depends_on:
       - spark-master
     volumes:
-      - ./spark-apps:/opt/bitnami/spark/apps
-      - ./spark-data:/opt/bitnami/spark/data
-      - ./spark-logs:/opt/bitnami/spark/logs
+      - ../spark-apps:/opt/bitnami/spark/apps
+      - ../spark-data:/opt/bitnami/spark/data
+      - ../spark-logs:/opt/bitnami/spark/logs
       - ./spark-defaults.conf:/opt/bitnami/spark/conf/spark-defaults.conf:ro
-      - ./jars:/opt/bitnami/spark/jars/custom:ro
+      - ../jars:/opt/bitnami/spark/jars/custom:ro
     networks:
       - spark-network
   
@@ -61,11 +61,11 @@ services:
     depends_on:
       - spark-master
     volumes:
-      - ./spark-apps:/opt/bitnami/spark/apps
-      - ./spark-data:/opt/bitnami/spark/data
-      - ./spark-logs:/opt/bitnami/spark/logs
+      - ../spark-apps:/opt/bitnami/spark/apps
+      - ../spark-data:/opt/bitnami/spark/data
+      - ../spark-logs:/opt/bitnami/spark/logs
       - ./spark-defaults.conf:/opt/bitnami/spark/conf/spark-defaults.conf:ro
-      - ./jars:/opt/bitnami/spark/jars/custom:ro
+      - ../jars:/opt/bitnami/spark/jars/custom:ro
     networks:
       - spark-network
   
@@ -80,9 +80,9 @@ services:
     depends_on:
       - spark-master
     volumes:
-      - ./spark-logs:/opt/bitnami/spark/logs
+      - ../spark-logs:/opt/bitnami/spark/logs
       - ./spark-defaults.conf:/opt/bitnami/spark/conf/spark-defaults.conf:ro
-      - ./jars:/opt/bitnami/spark/jars/custom:ro
+      - ../jars:/opt/bitnami/spark/jars/custom:ro
     networks:
       - spark-network
   
@@ -102,13 +102,13 @@ services:
     depends_on:
       - spark-master
     volumes:
-      - ./notebooks:/home/jovyan/work
-      - ./spark-apps:/home/jovyan/apps
-      - ./spark-data:/home/jovyan/data
-      - ./spark-logs:/opt/bitnami/spark/logs
+      - ../notebooks:/home/jovyan/work
+      - ../spark-apps:/home/jovyan/apps
+      - ../spark-data:/home/jovyan/data
+      - ../spark-logs:/opt/bitnami/spark/logs
       - ~/.aws:/home/jovyan/.aws:ro  # Mount AWS credentials
       - ./spark-defaults.conf:/usr/local/spark/conf/spark-defaults.conf:ro
-      - ./jars:/usr/local/spark/jars/custom:ro
+      - ../jars:/usr/local/spark/jars/custom:ro
     networks:
       - spark-network
 
